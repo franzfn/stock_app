@@ -25,7 +25,8 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         context: .
-        file: .docker/Dockerfile
+        file: ./docker/Dockerfile
         repository: stock_app/app
         tag_with_ref: true
         tag_with_sha: true
+        push: true 
