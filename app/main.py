@@ -36,14 +36,14 @@ with st.expander('Instructions'):
     | Date       | Ticker   | Order      | Price  | Quantity | Fee |
     |------------|----------|------------|--------|----------|-----|
     | 2019-10-01 | CASH.USD | deposit    | 1      | 100000   | 0   |
-    | 2019-10-11 | AAPL     | purchase   | 234.52 | 88       | 35  |
-    | 2019-11-25 | MSFT     | purchase   | 148.3  | 250      | 25  |
+    | 2019-10-11 | AAPL     | purchase   | 234.52 | 100      | 35  |
     | 2019-12-04 | AAPL     | sale       | 262.08 | 50       | 20  |
     | 2020-01-06 | FB       | purchase   | 208    | 100      | 10  |
-    | 2020-01-25 | CASH.USD | withdrawal | 1      | 30000    | 0   |
+    | 2021-02-16 | BNGO     | purchase   | 15.02  | 2500     | 20  |
+
     
     [Download example](https://github.com/simprecicchiani/PyPortfolioAnalytics/raw/master/assets/portfolios/generic.csv)
-    
+      https://github.com/franzfn/stock_app/blob/main/requirements.txt
     ### Input file rules:
 
     - File format is `.csv`
