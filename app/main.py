@@ -27,7 +27,7 @@ def dashboard():
         st.bar_chart(st.portfolio.cash_flows)
 
 st.set_page_config(layout="wide")
-st.title('Python Portfolio Analytics Dashboard 💰')
+st.title('Portfolio Dashboard')
 
 with st.expander('Instructions'):
     '''
@@ -41,9 +41,8 @@ with st.expander('Instructions'):
     | 2020-01-06 | FB       | purchase   | 208    | 100      | 10  |
     | 2021-02-16 | BNGO     | purchase   | 15.02  | 2500     | 20  |
 
-    
-    [Download example](https://github.com/simprecicchiani/PyPortfolioAnalytics/raw/master/assets/portfolios/generic.csv)
-      https://github.com/franzfn/stock_app/blob/main/requirements.txt
+    [Download example](https://github.com/franzfn/stock_app/blob/main/assets/example.csv)
+
     ### Input file rules:
 
     - File format is `.csv`
