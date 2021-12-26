@@ -1,36 +1,54 @@
 import streamlit as st
 from helpers.portfolio import Portfolio
 
+
 def dashboard():
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric('Portfolio Value',f"${round(st.portfolio.value[-1],2)}", f"${round(st.portfolio.pl[-1],2)}")
+    col1.metric(
+        "Portfolio Value",
+        f"${round(st.portfolio.value[-1],2)}",
+        f"${round(st.portfolio.pl[-1],2)}",
+    )
 
-    col2.metric("Daily Change",f"${round(st.portfolio.daily_change[-1],2)}", f"{round(st.portfolio.daily_ret[-1]*100,2)}%")
+    col2.metric(
+        "Daily Change",
+        f"${round(st.portfolio.daily_change[-1],2)}",
+        f"{round(st.portfolio.daily_ret[-1]*100,2)}%",
+    )
 
-    col3.metric("Annual Volatility _expected return", f"{round(st.portfolio.std*100, 2)}%", f"{round(st.portfolio.exp_ret,2)*100}%")
+    col3.metric(
+        "Annual Volatility _expected return",
+        f"{round(st.portfolio.std*100, 2)}%",
+        f"{round(st.portfolio.exp_ret,2)*100}%",
+    )
 
-    col4.metric("Sharpe _sortino Raio", f"{round(st.portfolio.sharpe, 2)}", f"{round(st.portfolio.sortino, 2)}")
+    col4.metric(
+        "Sharpe _sortino Raio",
+        f"{round(st.portfolio.sharpe, 2)}",
+        f"{round(st.portfolio.sortino, 2)}",
+    )
 
     col11, col12 = st.columns(2)
 
     with col11:
-        st.subheader('Portfolio Value')
+        st.subheader("Portfolio Value")
         st.line_chart(st.portfolio.value)
-        st.subheader('Portfolio vs SPY (% return)')
-        st.line_chart(st.portfolio.benchmark('SPY')*100)
+        st.subheader("Portfolio vs SPY (% return)")
+        st.line_chart(st.portfolio.benchmark("SPY") * 100)
 
     with col12:
-        st.subheader('Portfolio Holdings')
+        st.subheader("Portfolio Holdings")
         st.line_chart(st.portfolio.holdings)
-        st.subheader('Portfolio Cash Flows')
+        st.subheader("Portfolio Cash Flows")
         st.bar_chart(st.portfolio.cash_flows)
 
-st.set_page_config(layout="wide")
-st.title('Portfolio Dashboard')
 
-with st.expander('Instructions'):
-    '''
+st.set_page_config(layout="wide")
+st.title("Portfolio Dashboard")
+
+with st.expander("Instructions"):
+    """
     ### Input file example
 
     | Date       | Ticker   | Order      | Price  | Quantity | Fee |
@@ -41,7 +59,7 @@ with st.expander('Instructions'):
     | 2020-01-06 | FB       | purchase   | 208    | 100      | 10  |
     | 2021-02-16 | BNGO     | purchase   | 15.02  | 2500     | 20  |
 
-    [Download example](https://github.com/franzfn/stock_app/blob/main/assets/example.csv)
+    [Download example](https://github.com/franzfn/stock_app/raw/main/assets/example.csv)
 
     ### Input file rules:
 
@@ -56,8 +74,8 @@ with st.expander('Instructions'):
     - Works with single currency account only
     - Requires a deposit to calculate return on investment
     - Only accepts transactions within business days
-    '''
-uploaded_file = st.file_uploader('Upload your transactions', type='csv')
+    """
+uploaded_file = st.file_uploader("Upload your transactions", type="csv")
 
 if uploaded_file is not None:
     st.portfolio = Portfolio(uploaded_file)
